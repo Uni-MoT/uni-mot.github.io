@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<!-- TypeIt package -->
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.typeit/4.4.0/typeit.min.js"></script>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="UniMoT: Unified Molecule-Text Language Model with Discrete Token Representation">
+        <meta name="keywords" content="Large Language Models, Tokenization, Molecule Generation, Molecule Comprehension, Multi-modal Learning">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>UniMoT: Unified Molecule-Text Language Model with Discrete Token Representation</title>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MS74XY0D2Z"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'G-MS74XY0D2Z');
+        </script>
+        <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+        <link rel="stylesheet" href="./static/css/bulma.min.css">
+        <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+        <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+        <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+        <link rel="stylesheet" href="./static/css/index.css">
+        <link rel="icon" href="./static/images/higraphllm.webp">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script defer src="./static/js/fontawesome.all.min.js"></script>
+        <script src="./static/js/bulma-carousel.min.js"></script>
+        <script src="./static/js/bulma-slider.min.js"></script>
+        <script src="./static/js/index.js"></script>
+        <!-- Typing Effect JS -->
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.typeit/4.4.0/typeit.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/5.10.1/typeit.min.js"></script>
+        <!-- / Typing Effect JS -->
+        <style>
+    .bigdiv {
+      font-size: large;
+      font-family: "Courier New";
+      padding: 2rem;
+    }
+    p {
+      padding: 2rem;
+    }
+        </style>
+    </head>
+    <body>
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container is-max-desktop">
+                    <div class="columns is-centered">
+                        <div class="column has-text-centered">
+                            <h1 class="title is-2 publication-title">UniMoT: Unified Molecule-Text Language Model <br> with Discrete Token Representation</h1>
+                            <div class="is-size-4 publication-authors">
+                                <span class="author-block">
+                                    <a href="https://scholar.google.com/citations?user=d8lJm7MAAAAJ&hl=en">Juzheng Zhang</a>
+                                    <sup>1</sup>
+                                    ,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://yataobian.com/">Yatao Bian</a>
+                                    <sup>2</sup>
+                                    ,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://lfhase.win">Yongqiang Chen</a>
+                                    <sup>3</sup>
+                                    ,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://lars-group.github.io/">Quanming Yao</a>
+                                    <sup>1</sup>
+                                </span>
+                            </div>
+                            <div class="is-size-6 publication-authors">
+                                <span class="author-block">
+                                    <sup>1</sup>Tsinghua University,
+                                </span>
+                                <span class="author-block">
+                                    <sup>2</sup>Tencent AI Lab,
+                                </span>
+                                <span class="author-block">
+                                    <sup>3</sup>The Chinese University of Hong Kong
+                                </span>
+                            </div>
+                            <div class="column has-text-centered">
+                                <div class="publication-links">
+                                    <!-- PDF Link. -->
+                                    <span class="link-block">
+                                        <a href="http://arxiv.org/abs/2408.00863" class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fas fa-file-pdf"></i>
+                                            </span>
+                                            <span>Paper</span>
+                                        </a>
+                                    </span>
+                                    <!-- Code Link. -->
+                                    <span class="link-block">
+                                        <a href="https://uni-mot.github.io/" class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fab fa-github"></i>
+                                            </span>
+                                            <span>Code</span>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="content has-text-centered">
+              <img src="./static/images/architecture.png" style="width:900px;">
+            </div>
+            <section class="section">
+                <div class="container is-max-desktop">
+                    <!-- Abstract. -->
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-four-fifths">
+                            <h2 class="title is-3">Abstract</h2>
+                            <div class="content has-text-justified">
+                                <p>
+                                    The remarkable success of Large Language Models (LLMs) across diverse tasks has driven the research community to extend their capabilities to molecular applications. 
+                                    However, most molecular LLMs employ adapter-based architectures that do not treat molecule and text modalities equally and lack a supervision signal for the molecule modality. 
+                                    To address these issues, we introduce UniMoT, a Unified Molecule-Text LLM adopting a tokenizer-based architecture that expands the vocabulary of LLM with molecule tokens.
+                                    Specifically, we introduce a Vector Quantization-driven tokenizer that incorporates a Q-Former to bridge the modality gap between molecule and text. 
+                                    This tokenizer transforms molecules into sequences of molecule tokens with causal dependency, encapsulating high-level molecular and textual information. 
+                                    Equipped with this tokenizer, UniMoT can unify molecule and text modalities under a shared token representation and an autoregressive training paradigm, 
+                                    enabling it to interpret molecules as a foreign language and generate them as text.
+                                    Following a four-stage training scheme, UniMoT emerges as a multi-modal generalist capable of performing both molecule-to-text and text-to-molecule tasks. 
+                                    Extensive experiments demonstrate that UniMoT achieves state-of-the-art performance across a wide range of molecule comprehension and generation tasks.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Abstract. -->
+                </div>
+            </section>
+        <section class="section">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column is-full-width has-text-centered">
+                        <h2 class="title is-3">Molecule Tokenizer for LLMs</h2>
+                        <div class="content has-text-justified is-centered">
+                                <!-- Add image -->
+                                <div class="figure" style="align: left; text-align:center;">
+                                    <img
+                                        src="./static/images/tokenizer.png"
+                                        alt="img description"
+                                        width="700"
+                                    >
+                                    <p class="content is-centered" style="color: gray; font-size: 10pt;">
+                                        <b>Figure 1</b>. Illustration of our proposed molecule tokenizer. 
+                                    </p>
+                                </div>
+                                <p>
+                                    A pivotal aspect of UniMoT's architecture is the molecule tokenizer for transforming molecules into molecule tokens. 
+                                    We introduce a Vector Quantization-driven tokenizer, which incorporates a Q-Former to bridge the modality gap between molecules and text.
+                                    Specifically, we incorporate causal masks for the queries, enabling the Q-Former to generate a causal sequence of queries compatible with the unidirectional attention in LLMs. 
+                                    The sequence of queries is subsequently quantized into a sequence of molecule tokens using a learnable codebook. 
+                                    The molecule tokens encapsulate high-level molecular and textual information, which are then aligned with the 
+                                    latent space of a generative model via an MLP adapter, enabling the generation of desired molecules.
+                                </p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Abstract. -->
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column is-full-width has-text-centered">
+                        <h2 class="title is-3">Unified Molecule-Text Language Model</h2>
+                        <div class="content has-text-justified is-centered">
+                                <!-- Add image -->
+                                <div class="figure" style="align: left; text-align:center;">
+                                    <img
+                                        src="./static/images/autoregression.png"
+                                        alt="img description"
+                                        width="800"
+                                    >
+                                    <p class="content is-centered" style="color: gray; font-size: 10pt;">
+                                        <b>Figure 2</b>. Illustration of the multi-modal autoregressive pretraining on molecule-text datasets.
+                                    </p>
+                                </div>
+                                <p>
+                                    Pretrained LLMs can integrate the molecule tokenizer by treating molecule tokens as new words and constructing a molecule vocabulary through mapping the learned codebook. 
+                                    We adopt the unified discrete token representation for molecules and text, coupled with the unified next-token-prediction training paradigm of LLM. 
+                                    This unification of representation and training paradigm enhances LLMs' ability to understand molecule-text interactions and alignment.
+                                    UniMoT interprets molecules akin to understanding a foreign language, and generates them as if they were text. 
+                                    Following a four-stage training scheme, UniMoT serves as a multi-modal generalist capable of performing both molecule comprehension and generation tasks.
+                                </p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Abstract. -->
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column is-full-width has-text-centered">
+                        <h2 class="title is-3">Results on Downstream Tasks</h2>
+                        <div class="content has-text-justified is-centered">
+                            <p>
+                                UniMoT exhibits remarkable capabilities in multi-modal comprehension and generation. 
+                                Extensive experiments demonstrate that UniMoT achieves state-of-the-art performance across a wide spectrum of molecule comprehension tasks and molecule generation tasks.
+                            </p>
+                        </div>
+                        <div class="columns is-centered has-text-centered">
+                            <div class="column is-four-fifths">
+                                <h2 class="title is-4">Molecule Comprehension Tasks</h2>
+                                <div class="content has-text-justified">
+                                    <p>
+                                        We employ a range of molecule comprehension tasks, including molecular property prediction, molecule captioning, and molecule-text retrieval. 
+                                        UniMoT consistently demonstrates improvements across these tasks, showcasing its capability in aligning molecules with text. 
+                                        Additionally, the model's molecule tokenizer effectively generates tokens that encapsulate high-level molecular and textual information, which proves beneficial for these comprehension tasks.
+                                    </p>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="content has-text-centered">
+                            <img
+                                src="./static/images/classification.png"
+                                alt="img description"
+                                width="700"
+                            >
+                            <p class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Figure 3</b>. ROC-AUC (%) of molecular property prediction task (classification) on the MoleculeNet datasets.
+                            </p>
+                        </div>
+                        <div class="content has-text-centered">
+                            <img
+                                src="./static/images/regression.png"
+                                alt="img description"
+                                width="700"
+                            >
+                            <p class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Figure 4</b>. Mean Absolute Error (MAE) of molecular property prediction task (regression) on the QM9 dataset.
+                            </p>
+                        </div>
+                        <div class="content has-text-centered">
+                            <img
+                                src="./static/images/captioning.png"
+                                alt="img description"
+                                width="700"
+                            >
+                            <p class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Figure 5</b>. Performance (%) of molecule captioning task on the PubChem dataset. 
+                            </p>
+                        </div>
+                        <div class="content has-text-centered">
+                            <img
+                                src="./static/images/retrieval.png"
+                                alt="img description"
+                                width="700"
+                            >
+                            <p class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Figure 6</b>. Performance (%) of molecule-text retrieval task on the PubChem dataset.
+                            </p>
+                        </div>
+                        <div class="columns is-centered has-text-centered">
+                            <div class="column is-four-fifths">
+                                <h2 class="title is-4">Molecule Generation Tasks</h2>
+                                <div class="content has-text-justified">
+                                    <p>
+                                        We employ molecule generation tasks, which encompass caption-guided molecule generation, reagent prediction, forward reaction prediction, and retrosynthesis. 
+                                        UniMoT exhibits the capability to generate valid molecules with a higher degree of similarity to the target molecules compared to the baselines. 
+                                        UniMoT can generate molecules as if they were text, demonstrating strong generation capabilities 
+                                        and providing a new perspective to molecule generation tasks.
+                                    </p>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="content has-text-centered">
+                            <img
+                                src="./static/images/generation.png"
+                                alt="img description"
+                                width="700"
+                            >
+                            <p class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Figure 7</b>. Performance of molecule generation tasks on the Mol-Instructions datasets.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="BibTeX">
+            <div class="container is-max-desktop content">
+                <h2 class="title">Citation</h2>
+                <p>
+                    If you find UniMoT useful in your research, please cite our paper:
+                </p>
+                <pre>
+                    <code>
+  @article{zhang2024unimot,
+    title={UniMoT: Unified Molecule-Text Language Model with Discrete Token Representation},
+    author={Zhang, Juzheng and Bian, Yatao and Chen, Yongqiang and Yao, Quanming},
+    journal={arXiv preprint arXiv:2408.00863},
+    year={2024}
+  }
+                    </code>
+                </pre>
+                <br>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container">
+                <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="content">
+                            <p>
+                                Thanks for the source template from
+                                <a href="https://github.com/nerfies/nerfies.github.io">here</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
